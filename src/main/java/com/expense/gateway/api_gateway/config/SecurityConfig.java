@@ -17,16 +17,16 @@ public class SecurityConfig {
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http) {
         return http
             .csrf(ServerHttpSecurity.CsrfSpec::disable)
-            //.authorizeExchange(ex -> ex
-            	   // .pathMatchers(
-            	    	//	HttpMethod.OPTIONS, "/**",
-            	       // "/actuator/health",
-            	      //  "/auth/login",
-            	      //  "/auth/register"
-            	   // ).permitAll()
-            	  //  .anyExchange().authenticated()
-            	//)
-            .authorizeExchange(ex -> ex.anyExchange().permitAll())
+            .authorizeExchange(ex -> ex
+            	    .pathMatchers(
+            	    		HttpMethod.OPTIONS, "/**",
+            	        "/actuator/health",
+            	        "/auth/login",
+            	        "/auth/register"
+            	    ).permitAll()
+            	    .anyExchange().authenticated()
+            	)
+           // .authorizeExchange(ex -> ex.anyExchange().permitAll())
             .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
             .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
             .logout(ServerHttpSecurity.LogoutSpec::disable)
