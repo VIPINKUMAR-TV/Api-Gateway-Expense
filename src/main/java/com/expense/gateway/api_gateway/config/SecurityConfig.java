@@ -24,7 +24,7 @@ public class SecurityConfig {
             	        "/auth/login",
             	        "/auth/register"
             	    ).permitAll()
-            	    .anyExchange().authenticated()
+            	    .anyExchange().permitAll()
             	)
            // .authorizeExchange(ex -> ex.anyExchange().permitAll())
             .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
